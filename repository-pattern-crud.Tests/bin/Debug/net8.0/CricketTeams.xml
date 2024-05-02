@@ -78,6 +78,21 @@
             Gets or sets the name of the coach of the cricket team.
             </summary>
         </member>
+        <member name="T:cricket_teams.Data.ApplicationDbContext">
+            <summary>
+            Represents the database context for the cricket teams application.
+            </summary>
+        </member>
+        <member name="M:cricket_teams.Data.ApplicationDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{cricket_teams.Data.ApplicationDbContext})">
+            <summary>
+            Represents the database context for the cricket teams application.
+            </summary>
+        </member>
+        <member name="P:cricket_teams.Data.ApplicationDbContext.CricketTeams">
+            <summary>
+            Gets or sets the DbSet representing the cricket teams in the database.
+            </summary>
+        </member>
         <member name="T:cricket_teams.Repository.CricketTeamRepository">
             <summary>
             Repository for managing cricket teams in the database.
