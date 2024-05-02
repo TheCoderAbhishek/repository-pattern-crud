@@ -1,7 +1,0 @@
-2024-05-02 11:18:57.6807 INFO Application started. Press Ctrl+C to shut down. 
-2024-05-02 11:18:57.7391 INFO Hosting environment: Development 
-2024-05-02 11:18:57.7391 INFO Content root path: E:\Repository Pattern\repository-pattern-crud\cricket-teams 
-2024-05-02 11:19:05.6226 INFO Executed DbCommand (29ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-SELECT c.teamid, c.captain, c.coach, c.logoimage, c.teamname
-FROM "CricketTeams" AS c 
-2024-05-02 11:19:05.7783 INFO Fetched teams successfully. 
