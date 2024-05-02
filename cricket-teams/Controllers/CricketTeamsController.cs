@@ -23,13 +23,13 @@ namespace cricket_teams.Controllers
             try
             {
                 var teams = await _repository.GetAllTeamsAsync();
-                _logger.LogInformation("Fetched teams successfully.");
+                _logger.LogInformation("Retrieved all cricket teams successfully.");
                 return Ok(teams);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"An error occurred while fetching teams {ex.Message}");
-                return StatusCode(StatusCodes.Status500InternalServerError, $"An error occurred while fetching teams. {ex.Message}");
+                _logger.LogError("Failed to retrieve cricket teams: {errorMessage}", ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Failed to retrieve cricket teams. {ex.Message}");
             }
         }
 
@@ -46,16 +46,16 @@ namespace cricket_teams.Controllers
                 var team = await _repository.GetTeamByIdAsync(id);
                 if (team == null)
                 {
-                    _logger.LogError($"Team {id} not present on database.");
+                    _logger.LogWarning("No cricket team found with ID {id}.", id);
                     return NotFound();
                 }
-                _logger.LogError($"Team {id} fetched successfully.");
+                _logger.LogInformation("Retrieved cricket team with ID {id} successfully.", id);
                 return team;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"An error occurred while fetching team with ID {id}. {ex.Message}");
-                return StatusCode(StatusCodes.Status500InternalServerError, $"An error occurred while fetching team with ID {id}. {ex.Message}");
+                _logger.LogError("Failed to retrieve cricket team with ID {id}: {errorMessage}", id, ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Failed to retrieve cricket team with ID {id}. {ex.Message}");
             }
         }
 
@@ -71,16 +71,17 @@ namespace cricket_teams.Controllers
             {
                 if (team == null)
                 {
+                    _logger.LogWarning("Invalid cricket team data received for creation.");
                     return BadRequest();
                 }
                 await _repository.AddTeamAsync(team);
-                _logger.LogInformation("Team registration is successfully done.");
+                _logger.LogInformation("Cricket team registration is successfully done.");
                 return CreatedAtAction(nameof(GetTeamById), new { id = team.TeamId }, team);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"An error occurred while creating team. {ex.Message}");
-                return StatusCode(StatusCodes.Status500InternalServerError, $"An error occurred while creating team. {ex.Message}");
+                _logger.LogError("An error occurred while creating cricket team: {errorMessage}", ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, $"An error occurred while creating cricket team. {ex.Message}");
             }
         }
 
@@ -97,17 +98,18 @@ namespace cricket_teams.Controllers
             {
                 if (id != team.TeamId)
                 {
+                    _logger.LogWarning("Mismatch in cricket team ID between request and data.");
                     return BadRequest();
                 }
 
                 await _repository.UpdateTeamAsync(team);
-
+                _logger.LogInformation("Cricket team with ID {id} has been updated successfully.", id);
                 return NoContent();
             }
             catch (Exception ex)
             {
-                _logger.LogError($"An error occurred while updating team with ID {id}. {ex.Message}");
-                return StatusCode(StatusCodes.Status500InternalServerError, $"An error occurred while updating team with ID {id}. {ex.Message}");
+                _logger.LogError("An error occurred while updating cricket team with ID {id}: {errorMessage}", id, ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, $"An error occurred while updating cricket team with ID {id}. {ex.Message}");
             }
         }
 
@@ -123,15 +125,17 @@ namespace cricket_teams.Controllers
                 var team = await _repository.GetTeamByIdAsync(id);
                 if (team == null)
                 {
+                    _logger.LogWarning("No cricket team found with ID {id}. Delete operation aborted.", id);
                     return NotFound();
                 }
                 await _repository.DeleteTeamAsync(id);
+                _logger.LogInformation("Cricket team with ID {id} has been deleted successfully.", id);
                 return NoContent();
             }
             catch (Exception ex)
             {
-                _logger.LogError($"An error occurred while deleting team with ID {id}. {ex.Message}");
-                return StatusCode(StatusCodes.Status500InternalServerError, $"An error occurred while deleting team with ID {id}. {ex.Message}");
+                _logger.LogError("An error occurred while deleting cricket team with ID {id}: {errorMessage}", id, ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, $"An error occurred while deleting cricket team with ID {id}. {ex.Message}");
             }
         }
     }
