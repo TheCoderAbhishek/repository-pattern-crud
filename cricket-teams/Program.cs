@@ -1,8 +1,19 @@
 using cricket_teams.Data;
 using cricket_teams.Repository;
 using Microsoft.EntityFrameworkCore;
+using NLog.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configure NLog
+builder.Services.AddLogging(logging =>
+{
+    logging.ClearProviders();
+    logging.SetMinimumLevel(LogLevel.Trace);
+});
+
+// Add NLog as the logger provider
+builder.Services.AddSingleton<ILoggerProvider, NLogLoggerProvider>();
 
 // Add services to the container.
 builder.Services.AddControllers();

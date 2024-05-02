@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>cricket-teams</name>
+    </assembly>
+    <members>
+        <member name="T:cricket_teams.Controllers.CricketTeamsController">
+            <summary>
+            Controller for managing cricket teams.
+            </summary>
+        </member>
+        <member name="M:cricket_teams.Controllers.CricketTeamsController.#ctor(cricket_teams.Repository.CricketTeamRepository,Microsoft.Extensions.Logging.ILogger{cricket_teams.Controllers.CricketTeamsController})">
+            <summary>
+            Controller for managing cricket teams.
+            </summary>
+        </member>
+        <member name="M:cricket_teams.Controllers.CricketTeamsController.GetTeams">
+            <summary>
+            Retrieves all cricket teams.
+            </summary>
+            <returns>The list of all cricket teams.</returns>
+        </member>
+        <member name="M:cricket_teams.Controllers.CricketTeamsController.GetTeamById(System.Int32)">
+            <summary>
+            Retrieves a cricket team by its ID.
+            </summary>
+            <param name="id">The ID of the cricket team to retrieve.</param>
+            <returns>The cricket team with the specified ID.</returns>
+        </member>
+        <member name="M:cricket_teams.Controllers.CricketTeamsController.CreateTeam(cricket_teams.CricketTeam)">
+            <summary>
+            Creates a new cricket team.
+            </summary>
+            <param name="team">The cricket team to create.</param>
+            <returns>The newly created cricket team.</returns>
+        </member>
+        <member name="M:cricket_teams.Controllers.CricketTeamsController.UpdateTeam(System.Int32,cricket_teams.CricketTeam)">
+            <summary>
+            Updates an existing cricket team.
+            </summary>
+            <param name="id">The ID of the cricket team to update.</param>
+            <param name="team">The updated cricket team information.</param>
+            <returns>No content.</returns>
+        </member>
+        <member name="M:cricket_teams.Controllers.CricketTeamsController.DeleteTeam(System.Int32)">
+            <summary>
+            Deletes a cricket team by its ID.
+            </summary>
+            <param name="id">The ID of the cricket team to delete.</param>
+        </member>
+        <member name="T:cricket_teams.CricketTeam">
+            <summary>
+            Represents a cricket team.
+            </summary>
+        </member>
+        <member name="P:cricket_teams.CricketTeam.TeamId">
+            <summary>
+            Gets or sets the unique identifier for the cricket team.
+            </summary>
+        </member>
+        <member name="P:cricket_teams.CricketTeam.TeamName">
+            <summary>
+            Gets or sets the name of the cricket team.
+            </summary>
+        </member>
+        <member name="P:cricket_teams.CricketTeam.LogoImage">
+            <summary>
+            Gets or sets the path to the logo image of the cricket team.
+            </summary>
+        </member>
+        <member name="P:cricket_teams.CricketTeam.Captain">
+            <summary>
+            Gets or sets the name of the captain of the cricket team.
+            </summary>
+        </member>
+        <member name="P:cricket_teams.CricketTeam.Coach">
+            <summary>
+            Gets or sets the name of the coach of the cricket team.
+            </summary>
+        </member>
+        <member name="T:cricket_teams.Repository.CricketTeamRepository">
+            <summary>
+            Repository for managing cricket teams in the database.
+            </summary>
+        </member>
+        <member name="M:cricket_teams.Repository.CricketTeamRepository.#ctor(cricket_teams.Data.ApplicationDbContext)">
+            <summary>
+            Repository for managing cricket teams in the database.
+            </summary>
+        </member>
+        <member name="M:cricket_teams.Repository.CricketTeamRepository.GetAllTeamsAsync">
+            <summary>
+            Retrieves all cricket teams asynchronously.
+            </summary>
+            <returns>The list of all cricket teams.</returns>
+        </member>
+        <member name="M:cricket_teams.Repository.CricketTeamRepository.GetTeamByIdAsync(System.Int32)">
+            <summary>
+            Retrieves a cricket team by its ID asynchronously.
+            </summary>
+            <param name="id">The ID of the cricket team to retrieve.</param>
+            <returns>The cricket team with the specified ID, or null if not found.</returns>
+        </member>
+        <member name="M:cricket_teams.Repository.CricketTeamRepository.AddTeamAsync(cricket_teams.CricketTeam)">
+            <summary>
+            Adds a new cricket team asynchronously.
+            </summary>
+            <param name="team">The cricket team to add.</param>
+        </member>
+        <member name="M:cricket_teams.Repository.CricketTeamRepository.UpdateTeamAsync(cricket_teams.CricketTeam)">
+            <summary>
+            Updates an existing cricket team asynchronously.
+            </summary>
+            <param name="team">The updated cricket team information.</param>
+        </member>
+        <member name="M:cricket_teams.Repository.CricketTeamRepository.DeleteTeamAsync(System.Int32)">
+            <summary>
+            Deletes a cricket team by its ID asynchronously.
+            </summary>
+            <param name="id">The ID of the cricket team to delete.</param>
+        </member>
+    </members>
+</doc>
