@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>cricket_teams</RootNamespace>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>E:\Repository Pattern\repository-pattern-crud\cricket-teams\bin\Debug\net8.0\CricketTeams.xml</DocumentationFile>
+    <DocumentationFile>E:\Repository Pattern\repository-pattern-crud\cricket-teams\bin\Debug\net8.0\cricket-teams.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
